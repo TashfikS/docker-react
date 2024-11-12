@@ -3,7 +3,7 @@ services:
   - docker # travis CI will automatically install a copy of docker into the environment
 
 before_install:
-  - docker build -t TashfikS/docker-react -f Dockerfile.dev . # build the image with the Dockerfile.dev
+  - docker build -t tashfiks/docker-react -f Dockerfile.dev . # build the image with the Dockerfile.dev
 
 script:
-  - docker run -e CI=true TashfikS/docker-react npm run test # run the test script in the container
+  - docker run -e CI=true tashfiks/docker-react npm run test # run the test script in the container
