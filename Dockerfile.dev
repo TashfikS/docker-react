@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# Can be removed if you are using docker-compose file
+# Because in docker-compose file we are mounting the volume or reference to the local directory
+COPY . .
+
+CMD ["npm", "run", "start"]
