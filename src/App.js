@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Running with NGINX and Docker
+          I am the Feature Branch
         </p>
         <a
           className="App-link"
