@@ -2,8 +2,22 @@ sudo: required # is required to use docker service in travis with superuser perm
 services:
   - docker # travis CI will automatically install a copy of docker into the environment
 
+# name the docker tag with lowercase letters otherwise it will not work on travis
+
 before_install:
   - docker build -t tashfiks/docker-react -f Dockerfile.dev . # build the image with the Dockerfile.dev
 
 script:
   - docker run -e CI=true tashfiks/docker-react npm run test # run the test script in the container
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "frontend"
+  env: "Frontend-env-3"
+  bucket_name: "elasticbeanstalk-us-east-1-905418090184"
+  bucket_path: "frontend"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
